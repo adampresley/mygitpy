@@ -30,6 +30,12 @@ def getFilesByRevision(revision, returnStatus=False):
 
 	return result
 
+def getHeadCommitRevisionHash():
+	args = ["-1", "--format=\"%H\""]
+	result = _doGitCommand("log", args).strip()
+
+	return result
+
 def getRevisionsAfterDate(date, reverse=False):
 	result = []
 	args = ["--after=%s" % (date,), "--pretty=format:%H", "--name-status"]
